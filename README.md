@@ -57,23 +57,23 @@ errors = (predictions - y).reshape(-1,1)
 theta -= learning_rate * (1/ len(X1)) * X.T.dot(errors)
 return theta
 
-data = pd.read_csv('50_Startups.csv',header=None)
+data = pd.read_csv("50_Startups.csv")
 
 # Assuming the last column is your target variable 'y' and the preceding columns are your features 'X'
 
-X = (data.iloc[1:, :-2].values)
-X1=X.astype(float)
+x = (data.iloc[1:, :-2].values)
+x1=x.astype(float)
 
 scaler = StandardScaler()
 
 y = (data.iloc[1:,-1].values).reshape(-1,1)
 
-X1_Scaled = scaler.fit_transform(X1)
-Y1_Scaled = scaler.fit_transform(y)
+x1_Scaled = scaler.fit_transform(X1)
+y1_Scaled = scaler.fit_transform(y)
 
 # Learn model parameters
 
-theta = linear_regression(X1_Scaled, Y1_Scaled)
+theta = linear_regression(x1_Scaled, y1_Scaled)
 
 # Predict target value for a new data point
 
