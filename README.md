@@ -27,9 +27,7 @@ RegisterNumber: 212222100020
 ```
 ```py
 import numpy as np
-
 import pandas as pd
-
 from sklearn.preprocessing import StandardScaler
 
 def linear_regression(X1, y, learning_rate=0.01, num_iters=1000):
@@ -57,7 +55,6 @@ errors = (predictions - y).reshape(-1,1)
 # Update theta using gradient descent 
 
 theta -= learning_rate * (1/ len(X1)) * X.T.dot(errors)
-
 return theta
 
 data = pd.read_csv('50_Startups.csv',header=None)
@@ -65,7 +62,6 @@ data = pd.read_csv('50_Startups.csv',header=None)
 # Assuming the last column is your target variable 'y' and the preceding columns are your features 'X'
 
 X = (data.iloc[1:, :-2].values)
-
 X1=X.astype(float)
 
 scaler = StandardScaler()
@@ -73,7 +69,6 @@ scaler = StandardScaler()
 y = (data.iloc[1:,-1].values).reshape(-1,1)
 
 X1_Scaled = scaler.fit_transform(X1)
-
 Y1_Scaled = scaler.fit_transform(y)
 
 # Learn model parameters
@@ -83,13 +78,9 @@ theta = linear_regression(X1_Scaled, Y1_Scaled)
 # Predict target value for a new data point
 
 new_data = np.array([165349.2,136897.8,471784.1]).reshape(-1,1)
-
 new_Scaled = scaler.fit_transform(new_data)
-
 prediction =np.dot (np.append(1, new_Scaled), theta)
-
 prediction=prediction.reshape(-1,1)
-
 pre-scaler.inverse_transform(prediction)
 
 print(f"Predicted value: {pre}")
